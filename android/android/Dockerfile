@@ -1,4 +1,4 @@
-FROM sosie-exp-docker/sosie-generator
+FROM simonallier/sosie-exp
 MAINTAINER simon.allier@gmail.com
 
 RUN sudo apt-get update && sudo apt-get install -y libswt-gtk-3-java lib32z1 lib32ncurses5 lib32stdc++6
