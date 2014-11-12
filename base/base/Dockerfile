@@ -1,4 +1,4 @@
-FROM debian:laster
+FROM debian:stable
 MAINTAINER simon.allier@gmail.com
 
 RUN apt-get update && \
