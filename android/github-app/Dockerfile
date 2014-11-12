@@ -1,4 +1,4 @@
-FROM sosie-exp-docker/android
+FROM simonallier/sosie-exp-android
 MAINTAINER simon.allier@gmail.com
 
 
