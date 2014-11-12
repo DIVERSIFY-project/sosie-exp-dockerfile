@@ -1,4 +1,4 @@
-FROM sosie-exp-dockerfile/base
+FROM simonallier/sosie-exp-base
 MAINTAINER simon.allier@gmail.com
 
 
