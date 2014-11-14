@@ -16,4 +16,5 @@ RUN mvn clean android:emulator-start -Dandroid.emulator.avd=myandroid -Dandroid.
 
 WORKDIR /home/user/sosies-generator
 COPY exp.properties
-RUN java -Xmx3000m  -jar target/Diversify-statements-1.0-SNAPSHOT-jar-with-dependencies.jar exp.properties
+COPY ../../run.sh
+RUN sh run.sh exp.properties
