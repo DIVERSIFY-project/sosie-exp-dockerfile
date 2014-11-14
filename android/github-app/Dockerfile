@@ -1,4 +1,4 @@
-FROM simonallier/sosie-exp-android
+FROM simonallier/sosie-exp-android-base
 MAINTAINER simon.allier@gmail.com
 
 
@@ -8,7 +8,12 @@ RUN git clone https://github.com/github/android.git
 WORKDIR /home/user/android
 RUN echo y | android update sdk --all --filter android-16 --no-ui --force 
 
-COPY pom.xml  /home/user/android/pom.xml
+COPY pom.xml /home/user/android/pom.xml
 
-RUN mvn install
-RUN mvn android:emulator-start -Dandroid.emulator.avd=myandroid -Dandroid.emulator.options="-no-window -no-audio" -Dandroid.emulator.wait=100000 install
+RUN rm integration-tests/src/main/java/com/github/mobile/tests/issue/EditIssueActivityTest.java
+RUN mvn test
+RUN mvn clean android:emulator-start -Dandroid.emulator.avd=myandroid -Dandroid.emulator.options="-no-window -no-audio" -Dandroid.emulator.wait=100000 install android:emulator-stop
+
+WORKDIR /home/user/sosies-generator
+COPY exp.properties
+RUN java -Xmx3000m  -jar target/Diversify-statements-1.0-SNAPSHOT-jar-with-dependencies.jar exp.properties
