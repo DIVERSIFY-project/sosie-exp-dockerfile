@@ -1,20 +1,16 @@
 FROM simonallier/sosie-exp-android-base
 MAINTAINER simon.allier@gmail.com
 
+RUN echo y | android update sdk --all --filter android-16 --no-ui --force
 
 WORKDIR /home/user
 RUN git clone https://github.com/github/android.git
 
 WORKDIR /home/user/android
-RUN echo y | android update sdk --all --filter android-16 --no-ui --force 
-
 COPY pom.xml /home/user/android/pom.xml
-
-RUN rm integration-tests/src/main/java/com/github/mobile/tests/issue/EditIssueActivityTest.java
-RUN mvn test
-RUN mvn clean android:emulator-start -Dandroid.emulator.avd=myandroid -Dandroid.emulator.options="-no-window -no-audio" -Dandroid.emulator.wait=100000 install android:emulator-stop
+COPY build.sh /home/user/android/build.sh
+RUN sh build.sh
 
 WORKDIR /home/user/sosies-generator
-COPY exp.properties
-COPY ../../run.sh
-RUN sh run.sh exp.properties
+COPY exp.properties /home/user/sosies-generator/exp.properties
+COPY run.sh /home/user/sosies-generator/run.sh
