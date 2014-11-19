@@ -14,3 +14,4 @@ RUN sh build.sh
 WORKDIR /home/user/sosies-generator
 COPY exp.properties /home/user/sosies-generator/exp.properties
 COPY run.sh /home/user/sosies-generator/run.sh
+COPY dependencyPom.xml /home/user/android/dependencyPom.xml
