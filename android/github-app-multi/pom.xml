@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <version>1.9.0</version>
     <groupId>com.github.github</groupId>
     <artifactId>github-android-parent</artifactId>
     <packaging>pom</packaging>
     <name>GitHub Android app parent POM project</name>
-
     <modules>
         <module>app</module>
+        <module>HomeActivityTest</module>
         <module>integration-tests</module>
     </modules>
-
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <android.version>4.0.1.2</android.version>
@@ -37,7 +34,6 @@
                             <platform>16</platform>
                         </sdk>
                         <undeployBeforeDeploy>true</undeployBeforeDeploy>
-                        
                     </configuration>
                 </plugin>
                 <plugin>
@@ -48,9 +44,7 @@
                         <target>1.6</target>
                     </configuration>
                 </plugin>
-                
             </plugins>
         </pluginManagement>
     </build>
-    
 </project>
