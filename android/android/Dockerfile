@@ -11,6 +11,5 @@ ENV ANDROID_HOME /home/user/android-sdk-linux
 RUN echo "export ANDROID_HOME=$ANDROID_HOME" >> /home/user/.bashrc
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 RUN echo "export PATH=$PATH" >> /home/user/.bashrc
-RUN echo y | android update sdk --all --filter platform-tools,build-tools-20.0.0,android-17,sysimg-17,system-image,extra-android-support,sys-img-x86-android-17 --no-ui --force
-RUN echo y | android update sdk --all --filter sys-img-x86-android-17 --no-ui --force && \
+RUN echo y | android update sdk --all --filter platform-tools,build-tools-20.0.0,android-17,sysimg-17,system-image,extra-android-support --no-ui --force && \
 echo no | android create avd -n myandroid -t android-17 -b x86
