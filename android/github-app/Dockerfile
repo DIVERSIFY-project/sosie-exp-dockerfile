@@ -3,15 +3,15 @@ MAINTAINER simon.allier@gmail.com
 
 RUN echo y | android update sdk --all --filter android-16 --no-ui --force
 
-WORKDIR /home/user
+WORKDIR /root
 RUN git clone https://github.com/github/android.git
 
-WORKDIR /home/user/android
-COPY pom.xml /home/user/android/pom.xml
-COPY build.sh /home/user/android/build.sh
+WORKDIR /root/android
+COPY pom.xml /root/android/pom.xml
+COPY build.sh /root/android/build.sh
 RUN sh build.sh
 
-WORKDIR /home/user/sosies-generator
-COPY exp.properties /home/user/sosies-generator/exp.properties
-COPY run.sh /home/user/sosies-generator/run.sh
-COPY dependencyPom.xml /home/user/android/dependencyPom.xml
+WORKDIR /root/sosies-generator
+COPY exp.properties /root/sosies-generator/exp.properties
+COPY run.sh /root/sosies-generator/run.sh
+COPY dependencyPom.xml /root/android/dependencyPom.xml
