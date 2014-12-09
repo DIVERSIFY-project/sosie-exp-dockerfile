@@ -5,9 +5,9 @@ RUN apt-get update && \
 apt-get -y install sudo procps wget git 
 
 
-RUN echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
-useradd -u 5001 -G users,sudo -d /home/user --shell /bin/bash -m user && \
-echo "secret\nsecret" | passwd user
+#RUN echo "%sudo ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+#useradd -u 5001 -G users,sudo -d /home/user --shell /bin/bash -m user && \
+#echo "secret\nsecret" | passwd user
 
 
 RUN wget \
@@ -19,9 +19,9 @@ RUN wget \
 
 
 ENV JAVA_HOME /opt/jdk1.8.0_25
-RUN echo "export JAVA_HOME=$JAVA_HOME" > /home/user/.bashrc
+RUN echo "export JAVA_HOME=$JAVA_HOME" > /root/.bashrc
 ENV PATH $JAVA_HOME/bin:$PATH
-RUN echo "export PATH=$PATH" >> /home/user/.bashrc
+RUN echo "export PATH=$PATH" >> /root/.bashrc
 
 
 RUN wget --no-verbose -O /tmp/apache-maven-3.2.3.tar.gz \
@@ -36,15 +36,15 @@ RUN rm -f /tmp/apache-maven-3.2.3.tar.gz
 
 
 
-WORKDIR /home/user
+WORKDIR /root
 
 RUN git clone https://github.com/marcelinorc/junco-provider.git
-WORKDIR /home/user/junco-provider
+WORKDIR /root/junco-provider
 RUN mvn install 
 
-WORKDIR /home/user
+WORKDIR /root
 RUN git clone https://github.com/DIVERSIFY-project/sosies-generator.git
-WORKDIR /home/user/sosies-generator
+WORKDIR /root/sosies-generator
 RUN git checkout rewrite_ast
 
 RUN mvn package -Dmaven.test.skip=true
