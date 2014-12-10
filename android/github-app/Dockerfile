@@ -2,7 +2,7 @@ FROM simonallier/sosie-exp-android-base
 MAINTAINER simon.allier@gmail.com
 
 RUN echo y | android update sdk --all --filter android-16 --no-ui --force
-
+RUN echo Y | android update sdk --all --filter sysimg-17,system-image,extra-android-support --no-ui --force
 WORKDIR /root
 RUN git clone https://github.com/github/android.git
 
