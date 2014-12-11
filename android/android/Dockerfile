@@ -9,6 +9,8 @@ RUN wget -qO- "http://dl.google.com/android/android-sdk_r23.0.2-linux.tgz" | tar
 # Other tools and resources of Android SDK
 ENV ANDROID_HOME /root/android-sdk-linux
 RUN echo "export ANDROID_HOME=$ANDROID_HOME" >> /root/.bashrc
+ENV HOME /root
+RUN echo "export HOME=$HOME" >> /root/.bashrc
 ENV ANDROID_EMULATOR_FORCE_32BIT true
 RUN echo "export ANDROID_EMULATOR_FORCE_32BIT=true" >> /root/.bashrc
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
