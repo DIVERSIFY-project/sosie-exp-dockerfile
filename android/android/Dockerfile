@@ -17,7 +17,7 @@ RUN echo "export ANDROID_EMULATOR_FORCE_32BIT=true" >> /root/.bashrc
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
 RUN echo "export PATH=$PATH" >> /root/.bashrc
 RUN echo y | android update sdk --all --filter platform-tools,build-tools-21.1.1,android-21 --no-ui --force 
-RUN echo y | android update sdk --all --filter sys-img-x86-android-21,sys-img-x86_64-android-21 --no-ui --force 
-RUN echo no | android create avd -n myandroid -t android-21 -b x86_64
+RUN echo y | android update sdk --all --filter sys-img-x86-android-21 --no-ui --force 
+RUN echo Y |  android update sdk --all --filter addon-google_apis-google-21,sys-img-x86-addon-google_apis-google-21 --no-ui --force 
 
-
+RUN echo no | android create avd -n myandroid -t "Google Inc.:Google APIs:21" -b google_apis/x86
